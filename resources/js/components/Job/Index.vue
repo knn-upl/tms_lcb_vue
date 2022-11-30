@@ -1,8 +1,9 @@
 <template>
+  
   <v-card>
     <v-tabs
       v-model="tab"
-      bg-color="#d50000"
+      bg-color="#EB1D36"
       color="white"
     >
       <v-tab value="table">Job Table</v-tab>
@@ -10,13 +11,26 @@
     
     </v-tabs>
 
-    <v-card-text>
-      <v-window v-model="tab">
-        <v-window-item value="table">
-          <v-table>
+    <v-card-text style="background-color:white">     
+    
+
+      <v-window v-model="tab" >
+      
+        <v-window-item value="table" >
+          <v-row no-gutters class="mb-5">
+
+                <v-col cols="3">           
+                    <Datepicker v-model="date" range ></Datepicker>
+                </v-col>         
+                <v-col cols="3" class="mx-2">
+                  <v-btn variant="tonal" color="blue" width="120">ค้นหา</v-btn>
+                </v-col>            
+          </v-row>
+     
+          <v-table style="background-color:white">
             <thead>
               <tr >
-                  <th v-for="item in table_header" :key="item"> {{item}}</th>             
+                  <th v-for="item in table_header" :key="item" >{{item}}</th>             
               </tr>
             </thead>
             <tbody>
@@ -45,10 +59,30 @@
  
 </template>
 
+<script setup>
+    import Datepicker from '@vuepic/vue-datepicker';
+    import '@vuepic/vue-datepicker/dist/main.css'
+    import { ref, onMounted } from 'vue';
+</script>
 <script>
+
   export default {
-    data () {
+    setup() {
+      const date = ref();
+
+// For demo purposes assign range from the current date
+      onMounted(() => {
+          const startDate = new Date();
+          const endDate = new Date(new Date().setDate(startDate.getDate() + 7));
+          date.value = [startDate, endDate];
+      })
       return {
+        date,
+      }
+    },
+    data () {
+      return {       
+        date:null,
         tab: null,
         table_header:[
           "Job#","Order#","ลูกค้า","Booking No","ประเภทงาน","เบอร์ตู้","ขนาดตู้","สถานที่รับตู้","วันที่รับตู้","สถานที่ส่งตู้ (Load)","วันที่ส่งตู้ (Load)","สถานที่คืนตู้","วันที่คืนตู้",

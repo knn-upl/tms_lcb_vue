@@ -1,7 +1,7 @@
 <template>
   <v-main>
     <v-container>
-      <div class="mx-5">
+      <div class="mx-5 text-dark">
         <router-view></router-view>
       </div>
    

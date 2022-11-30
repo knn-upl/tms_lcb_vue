@@ -5,13 +5,19 @@ import {createRouter,createWebHistory} from 'vue-router';
 const routes = [
   {
     path:'/',
-    name:'job',
-    component: ()=>import('./components/Job.vue'),
+    name:'jobmain',
+    component: ()=>import('./components/Job/Index.vue'),
   }  ,
+  {
+    path:'/job',
+    name:'job',
+    component: ()=>import('./components/Job/Job.vue'),
+  }  ,
+  
   {
     path:'/profit',
     name:'profit',
-    component:()=>import('./components/Profit.vue'),
+    component:()=>import('./components/profit/Profit.vue'),
   }
 ];
 const router = createRouter({

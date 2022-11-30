@@ -1,9 +1,12 @@
 <template>
-    <v-app>
-        <sidebar></sidebar>
-        <appbar></appbar>
-        <Mains></Mains>
+    <v-app >
+        
+            <sidebar></sidebar>
+            <appbar></appbar>
+            <Mains style="background-color:#E9ECEF"></Mains>
+    
 
+   
     </v-app>
 </template>
 <script setup>
